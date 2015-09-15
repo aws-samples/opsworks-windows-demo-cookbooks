@@ -1,0 +1,4 @@
+@echo off
+
+ssh.exe -i <%= @ssh_identity_file.inspect %> -o UserKnownHostsFile=NUL -o StrictHostKeyChecking=no %*
+
