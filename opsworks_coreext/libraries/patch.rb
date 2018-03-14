@@ -5,7 +5,7 @@ class Chef
         # windows_package resource has a bug for Chef 12.2.1
         # See https://github.com/chef/chef/issues/3316
 
-        if RUBY_PLATFORM =~ /mingw32/
+        if RUBY_PLATFORM =~ /mingw32/ && instance_methods(true).include?(:get_installed_version)
           alias_method :_get_installed_version, :get_installed_version
           def get_installed_version(product_code)
             v = _get_installed_version(product_code)
