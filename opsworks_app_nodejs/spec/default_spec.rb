@@ -18,13 +18,13 @@ describe "opsworks_app_nodejs::default" do
 
     allow(File).to receive(:file?).and_return(false)
 
-    stub_search(:aws_opsworks_app) {[{ "shortname" => "helloworld",
-                                       "app_source" => {
-                                         "url" => "http://foo.example.com",
-                                         "type" => "git"
-                                       },
-                                       "environment" => {}
-                                     }]}
+    stub_search(:aws_opsworks_app, "deploy:true") {[{ "shortname" => "helloworld",
+                                                      "app_source" => {
+                                                        "url" => "http://foo.example.com",
+                                                        "type" => "git"
+                                                      },
+                                                      "environment" => {}
+                                                    }]}
   end
 
   context "Node.JS App" do
