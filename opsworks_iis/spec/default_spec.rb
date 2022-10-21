@@ -25,8 +25,21 @@ describe "opsworks_iis::default" do
       expect(chef_run).to include_recipe("opsworks_iis::urlrewrite")
     end
 
-    it "drop 'Default Website Site' from IIS" do
+    it "renders default template" do
+      expect(chef_run).to create_template("C:/inetpub/wwwroot/default.htm").with(
+        source: "default_htm.erb",
+        rights: [{:permissions=>:read, :principals=>"Everyone"}]
+      )
+    end
+
+    it "drop 'Default Website Site' from IIS when enabled" do
       expect(chef_run).to run_powershell_script("drop 'Default Web Site' from IIS")
+    end
+
+    it "do not drop 'Default Website Site' from IIS when disabled" do
+      chef_runner.node.set["opsworks_iis"]["remove_default_website"] = false
+
+      expect(chef_run).not_to run_powershell_script("drop 'Default Web Site' from IIS")
     end
 
     it "is started" do
