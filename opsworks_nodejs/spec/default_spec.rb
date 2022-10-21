@@ -15,7 +15,7 @@ describe "opsworks_nodejs::default" do
 
   context "Node.JS" do
     it "file is downloaded" do
-      expect(chef_run).to create_remote_file(File.join(Chef::Config["file_cache_path"], "node-v0.12.6-x86.msi"))
+      expect(chef_run).to create_remote_file(File.join(Chef::Config["file_cache_path"], "node-v0.12.7-x86.msi"))
     end
 
     it "node is installed" do

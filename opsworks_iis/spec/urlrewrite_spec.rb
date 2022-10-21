@@ -15,7 +15,7 @@ describe "opsworks_iis::urlrewrite" do
 
   context "Internet Information Server" do
     it "download IIS Rewrite URL extension" do
-      expect(chef_run).to create_remote_file(File.join(Chef::Config["file_cache_path"], "rewrite_2.0_rtw_x64.msi"))
+      expect(chef_run).to create_remote_file(File.join(Chef::Config["file_cache_path"], "rewrite_amd64_en-US.msi"))
     end
 
     it "installs IIS Rewrite URL extension" do
