@@ -5,3 +5,4 @@ default["opsworks_iis"]["features"] = [
   "Web-Http-Redirect",
   "Web-Mgmt-Console",
 ]
+default["opsworks_iis"]["remove_default_website"] = true
